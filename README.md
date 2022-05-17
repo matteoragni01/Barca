@@ -1,2 +1,0 @@
-# Barca
-Progetto Barca

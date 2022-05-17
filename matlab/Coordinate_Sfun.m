@@ -66,9 +66,9 @@ function [sys,x0,str,ts,simStateCompliance]=mdlInitializeSizes(xInit)
 %
 sizes = simsizes;
 
-sizes.NumContStates  = 2;
+sizes.NumContStates  = 3;
 sizes.NumDiscStates  = 0;
-sizes.NumOutputs     = 1;
+sizes.NumOutputs     = 3;
 sizes.NumInputs      = 3;
 sizes.DirFeedthrough = 0;
 sizes.NumSampleTimes = 1;   % at least one sample time is needed
@@ -108,9 +108,9 @@ simStateCompliance = 'UnknownSimState';
 %
 function sys=mdlDerivatives(t,x,u)
    
-    sys(1) = u(3);
-    sys(2) = u(2) * cos(x(1)) + u(1) * sin(x(1));
-
+    sys(1) = u(1) * cos(x(3)) - u(2) * sin(x(3));
+    sys(2) = u(2) * cos(x(3)) + u(1) * sin(x(3));
+    sys(3) = u(3);
 
 % end mdlDerivatives
 
@@ -134,9 +134,9 @@ sys = [];
 %=============================================================================
 %
 function sys=mdlOutputs(t,x,u)
-    sys(1) = x(2);
-    
-    
+    sys(1) = x(1);
+    sys(2) = x(2);
+    sys(3) = x(3);
 
 % end mdlOutputs
 
