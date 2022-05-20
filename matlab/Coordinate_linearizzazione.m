@@ -1,12 +1,12 @@
 clc
-clear
+
 close all
 
 %% Calcolo punti di equilibrio
 
-x0 = [0,0,0.3491]';
-
-[X, U, Y, DX] = trim('simCoordinate', x0, [], [], [], []);
+x0 = [5,10,0]';
+u0 = [0.89,0,0]';
+[X, U, Y, DX] = trim('simCoordinate', x0, u0, [], 2, 1);
 
 [A,B,C,D] = linmod('simCoordinate', X, U);
 
@@ -23,15 +23,12 @@ G(1,2) = Gc(1,2);
 G(2,1) = Gc(2,1);
 G(2,2) = Gc(2,2);
 
-%% Funzione di trasferimento in cui gli input sono disaccopiati
-
-Gd(1,1) = G(1,1);
-Gd(1,2) = 0;
-Gd(2,1) = 0;
-Gd(2,2) = G(2,2);
-
 %% DELTA
 
-D= inv(G)*Gd;
+DELTA(1,1) = {1};
+DELTA(2,2) = {1};
+DELTA(1,2) = {-G(1,2)* (1/G(1,1))};
+DELTA(2,1) = {-G(2,1)* (1/G(2,2))};
+
 
 
