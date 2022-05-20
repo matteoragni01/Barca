@@ -1,10 +1,10 @@
 clc
-
+clear
 close all
 
 %% Calcolo punti di equilibrio
 
-x0 = [5,10,0]';
+x0 = [5,10,0.3491]';
 u0 = [0.89,0,0]';
 [X, U, Y, DX] = trim('simCoordinate', x0, u0, [], 2, 1);
 
