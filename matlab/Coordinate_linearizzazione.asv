@@ -4,7 +4,7 @@ close all
 
 %% Calcolo punti di equilibrio
 
-x0 = [5,10,0.3491]';
+x0 = [5,10,pi/2]';
 u0 = [0.89,0,0]';
 [X, U, Y, DX] = trim('simCoordinate', x0, u0, [], 2, 1);
 
@@ -38,6 +38,6 @@ figure;
 plot3(out.coordX.Time,out.coordX.Data, out.coordY.Data);
 xlabel("Time");
 
-ylabel("X");
-zlabel("Y");
-ylim([0 50]);
+ylabel("Y");
+zlabel("X");
+zlim([0 50]);
