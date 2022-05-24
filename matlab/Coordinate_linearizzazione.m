@@ -31,7 +31,9 @@ DELTA(1,2) = {-G(1,2) * (1/G(1,1))};
 DELTA(2,1) = {-G(2,1) * (1/G(2,2))};
 
 
-Kx=0.5;
+Kx = 0.5;
+Ky = 0.5;
+Kpsi = 0.5;
 out = sim('Schema');
 
 figure;
@@ -41,3 +43,4 @@ xlabel("Time");
 ylabel("X");
 zlabel("Y");
 ylim([0 50]);
+grid on
